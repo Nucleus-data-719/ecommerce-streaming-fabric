@@ -1,0 +1,50 @@
+table gold_event_summary
+	lineageTag: 7271d79b-0271-4f2c-bdb6-84e32227b37b
+	sourceLineageTag: [dbo].[gold_event_summary]
+
+	column event_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: c0411cdd-5412-44e4-a4f1-f602f5bbc67f
+		sourceLineageTag: event_date
+		summarizeBy: none
+		sourceColumn: event_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column event_type
+		dataType: string
+		lineageTag: 8b8a88f4-229e-4159-90b4-f00ceac9a270
+		sourceLineageTag: event_type
+		summarizeBy: none
+		sourceColumn: event_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_events
+		dataType: int64
+		formatString: 0
+		lineageTag: 9e3c899b-ba45-4bd7-bb48-b374b7b8e1c9
+		sourceLineageTag: total_events
+		summarizeBy: sum
+		sourceColumn: total_events
+
+		annotation SummarizationSetBy = Automatic
+
+	column unique_customers
+		dataType: int64
+		formatString: 0
+		lineageTag: 5e6ef5b1-ebce-409a-9781-a98ecc63a2e7
+		sourceLineageTag: unique_customers
+		summarizeBy: sum
+		sourceColumn: unique_customers
+
+		annotation SummarizationSetBy = Automatic
+
+	partition gold_event_summary = entity
+		mode: directLake
+		source
+			entityName: gold_event_summary
+			schemaName: dbo
+			expressionSource: 'DirectLake - ecommerce_lakehouse'
+

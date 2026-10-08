@@ -1,0 +1,89 @@
+table gold_product_performance
+	lineageTag: e09aeb14-e1f3-4985-bcae-40c58ca925f6
+	sourceLineageTag: [dbo].[gold_product_performance]
+
+	column product_id
+		dataType: string
+		lineageTag: b1d29ba8-dcfd-4258-9f04-32618faf37d6
+		sourceLineageTag: product_id
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_name
+		dataType: string
+		lineageTag: af5ff399-a4d3-4acf-822b-b42ef944745a
+		sourceLineageTag: product_name
+		summarizeBy: none
+		sourceColumn: product_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: string
+		lineageTag: 0aac8c14-540b-4c80-8e24-44d00dd08ba4
+		sourceLineageTag: category
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column currency
+		dataType: string
+		lineageTag: c2f6c0a8-2c23-475a-999e-fb85b6a12978
+		sourceLineageTag: currency
+		summarizeBy: none
+		sourceColumn: currency
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_orders
+		dataType: int64
+		formatString: 0
+		lineageTag: 5b9165b0-8f05-4457-8540-32c147e20d5d
+		sourceLineageTag: total_orders
+		summarizeBy: sum
+		sourceColumn: total_orders
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_revenue
+		dataType: double
+		lineageTag: 1c2c6434-0fc1-421b-8512-a462031058c2
+		sourceLineageTag: total_revenue
+		summarizeBy: sum
+		sourceColumn: total_revenue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column average_order_value
+		dataType: double
+		lineageTag: 56471a38-cb2d-4ba9-92fb-e8ab71a92ac9
+		sourceLineageTag: average_order_value
+		summarizeBy: sum
+		sourceColumn: average_order_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column unique_customers
+		dataType: int64
+		formatString: 0
+		lineageTag: 883cdd94-c231-430b-af89-c79516c43c30
+		sourceLineageTag: unique_customers
+		summarizeBy: sum
+		sourceColumn: unique_customers
+
+		annotation SummarizationSetBy = Automatic
+
+	partition gold_product_performance = entity
+		mode: directLake
+		source
+			entityName: gold_product_performance
+			schemaName: dbo
+			expressionSource: 'DirectLake - ecommerce_lakehouse'
+

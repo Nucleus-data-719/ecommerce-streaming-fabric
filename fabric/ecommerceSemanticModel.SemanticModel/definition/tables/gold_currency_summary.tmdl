@@ -1,0 +1,62 @@
+table gold_currency_summary
+	lineageTag: 0ec27787-6eff-4981-9b6a-4432f80bb2f8
+	sourceLineageTag: [dbo].[gold_currency_summary]
+
+	column currency
+		dataType: string
+		lineageTag: 0060fcd6-0d6b-4b19-9cc9-153ccb17c422
+		sourceLineageTag: currency
+		summarizeBy: none
+		sourceColumn: currency
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_purchases
+		dataType: int64
+		formatString: 0
+		lineageTag: ce5cc18c-ec66-4589-b099-43eb226e031e
+		sourceLineageTag: total_purchases
+		summarizeBy: sum
+		sourceColumn: total_purchases
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_revenue
+		dataType: double
+		lineageTag: 78b66e6e-c085-414c-812d-27eb87ec611a
+		sourceLineageTag: total_revenue
+		summarizeBy: sum
+		sourceColumn: total_revenue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column average_order_value
+		dataType: double
+		lineageTag: 00a77441-743b-431c-b624-5b9f09874311
+		sourceLineageTag: average_order_value
+		summarizeBy: sum
+		sourceColumn: average_order_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column unique_customers
+		dataType: int64
+		formatString: 0
+		lineageTag: 04ab1a05-dab1-4c00-a41d-d8fda9bd0a17
+		sourceLineageTag: unique_customers
+		summarizeBy: sum
+		sourceColumn: unique_customers
+
+		annotation SummarizationSetBy = Automatic
+
+	partition gold_currency_summary = entity
+		mode: directLake
+		source
+			entityName: gold_currency_summary
+			schemaName: dbo
+			expressionSource: 'DirectLake - ecommerce_lakehouse'
+

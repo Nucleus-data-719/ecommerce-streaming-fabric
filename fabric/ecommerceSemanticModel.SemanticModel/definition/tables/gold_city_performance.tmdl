@@ -1,0 +1,69 @@
+table gold_city_performance
+	lineageTag: b755908a-47b4-4cb6-9e8c-4e12ee7b37dd
+	sourceLineageTag: [dbo].[gold_city_performance]
+
+	column product_name
+		dataType: string
+		lineageTag: 2eeeff6e-fd0c-4710-a5ea-32aa90684e0e
+		sourceLineageTag: product_name
+		summarizeBy: none
+		sourceColumn: product_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: d6f6bbd1-b45c-4949-85d8-62de0585f5d3
+		sourceLineageTag: city
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column currency
+		dataType: string
+		lineageTag: 6f3a3bc1-7153-4cd7-8f79-eb55b8e786cf
+		sourceLineageTag: currency
+		summarizeBy: none
+		sourceColumn: currency
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_purchases
+		dataType: int64
+		formatString: 0
+		lineageTag: 92fa3ddc-5fd3-494e-a7e4-883111c0deaa
+		sourceLineageTag: total_purchases
+		summarizeBy: sum
+		sourceColumn: total_purchases
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_revenue
+		dataType: double
+		lineageTag: c172fa9b-d100-40a2-8ed7-d0bd78ccda0a
+		sourceLineageTag: total_revenue
+		summarizeBy: sum
+		sourceColumn: total_revenue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column unique_customers
+		dataType: int64
+		formatString: 0
+		lineageTag: de5470f8-ac48-4b72-a2f1-8a48dd260003
+		sourceLineageTag: unique_customers
+		summarizeBy: sum
+		sourceColumn: unique_customers
+
+		annotation SummarizationSetBy = Automatic
+
+	partition gold_city_performance = entity
+		mode: directLake
+		source
+			entityName: gold_city_performance
+			schemaName: dbo
+			expressionSource: 'DirectLake - ecommerce_lakehouse'
+
